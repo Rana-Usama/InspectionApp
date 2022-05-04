@@ -1,4 +1,5 @@
 export default {
+    brown: '#da6f50',
     primary: "#1D3557",
     secondary: "#E63946",
     white: "#fff",

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import { RFPercentage } from 'react-native-responsive-fontsize';
 
 //components
@@ -99,7 +99,7 @@ function LoginScreen(props) {
                     title="LOGIN"
                     padding={RFPercentage(1.8)}
                     onPress={() => handleLogin()}
-                    backgroundColor={Colors.secondary}
+                    backgroundColor={Colors.brown}
                     color={Colors.white}
                     bold={false}
                     borderRadius={RFPercentage(1.5)}
@@ -112,7 +112,7 @@ function LoginScreen(props) {
                     Forget Password?
                 </Text>
                 <TouchableOpacity onPress={() => props.navigation.navigate("SignupScreen")} activeOpacity={0.7} style={{ marginLeft: RFPercentage(0.6) }} >
-                    <Text style={{ color: Colors.secondary, fontSize: RFPercentage(1.9), fontWeight: 'bold', textDecorationLine: 'underline' }} >
+                    <Text style={{ color: Colors.brown, fontSize: RFPercentage(1.9), fontWeight: 'bold', textDecorationLine: 'underline' }} >
                         Register
                     </Text>
                 </TouchableOpacity>
