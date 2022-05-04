@@ -53,6 +53,7 @@ function InputField({
 
             <TextInput
                 placeholder={placeholder}
+                multiline={true}
                 placeholderTextColor={placeholderColor}
                 onChangeText={(text) => handleFeild(text)}
                 onResponderStart={onTouchStart}
@@ -62,7 +63,7 @@ function InputField({
                 keyboardType={keyboardType}
                 secureTextEntry={secure && !eyeIcon}
                 textAlign={textCenter}
-                style={{ left: placeholderAtCenter ? RFPercentage(3) : 0, color: color, alignSelf: "center", fontFamily: fontFamily, fontSize: fontSize, width: leftIconName ? "85%" : "90%" }}
+                style={{ flexWrap: 'wrap', left: placeholderAtCenter ? RFPercentage(3) : 0, color: color, alignSelf: "center", fontFamily: fontFamily, fontSize: fontSize, width: leftIconName ? "85%" : "90%" }}
                 {...otherProps}
             ></TextInput>
 

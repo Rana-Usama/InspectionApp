@@ -3,6 +3,7 @@ import { View, Text, Image, ImageBackground, TouchableOpacity, StyleSheet, Scrol
 import ReactNativeCrossPicker from "react-native-cross-picker";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { RFPercentage } from 'react-native-responsive-fontsize';
+import { Table, Row, Rows, Col, TableWrapper } from 'react-native-table-component';
 
 //components
 import Screen from './../components/Screen';
@@ -15,23 +16,59 @@ import Colors from '../config/Colors';
 
 function CreateNewInspectionScreen(props) {
 
+    const tableData = [
+        {
+            firstTitle: 'ID',
+            secondTitle: '1',
+            thirdTitle: '2'
+        },
+        {
+            firstTitle: 'Image',
+            secondTitle: 'pic',
+            thirdTitle: 'pic'
+        },
+        {
+            firstTitle: 'Description',
+            secondTitle: 'Piant Defect',
+            thirdTitle: 'Broken Marble'
+        },
+        {
+            firstTitle: 'Room',
+            secondTitle: 'Living',
+            thirdTitle: 'Dining'
+        },
+        {
+            firstTitle: 'Status',
+            secondTitle: 'Open',
+            thirdTitle: 'Open'
+        },
+        {
+            firstTitle: 'Comments',
+            secondTitle: 'Not recified',
+            thirdTitle: 'Not recified'
+        },
+    ]
+
     const bottomTabData = [
         {
-            title: 'Home',
+            title: 'ID',
             // onPress:''
         },
         {
-            title: 'Tutorials'
+            title: 'Image'
         },
         {
-            title: 'Files'
+            title: 'Description'
         },
         {
-            title: 'Settings'
+            title: 'Room'
         },
         {
-            title: 'Export PDF'
-        }
+            title: 'Status'
+        },
+        {
+            title: 'Comments'
+        },
     ]
 
     // Picker
@@ -148,25 +185,41 @@ function CreateNewInspectionScreen(props) {
                         ))}
                     </View>
 
+                    <View style={{ marginTop: RFPercentage(5), width: '90%', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }} >
+                        {tableData.map((item, i) => (
+                            <View key={i} style={{ justifyContent: 'center', alignItems: 'flex-start' }} >
+                                <Text style={{ color: Colors.darkGrey }} >
+                                    {item.firstTitle}
+                                </Text>
+                                <Text style={{ marginTop: RFPercentage(2) }} >
+                                    {item.secondTitle}
+                                </Text>
+                                <Text style={{ marginTop: RFPercentage(2) }}>
+                                    {item.thirdTitle}
+                                </Text>
+                            </View>
+                        ))}
+                    </View>
+
                     {/* Button */}
                     <View style={{ width: "100%", alignItems: "center", marginTop: RFPercentage(6) }}>
                         <MyAppButton
                             title="Add Items"
-                            padding={RFPercentage(1.8)}
-                            // onPress={() => handleLogin()}
+                            padding={RFPercentage(1.6)}
+                            onPress={() => props.navigation.navigate("AddSnagScreen")}
                             backgroundColor={Colors.brown}
                             color={Colors.white}
                             bold={false}
                             borderRadius={RFPercentage(1.5)}
-                            width={"42%"}
+                            width={"35%"}
                         />
                     </View>
 
+                    <View style={{ marginBottom: RFPercentage(8) }} />
                 </View>
             </ScrollView>
 
             <View style={{ position: 'absolute', bottom: RFPercentage(2), width: '84%', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }} >
-
                 {bottomTabData.map((item, i) => (
                     <TouchableOpacity key={i} activeOpacity={0.8} >
                         <Text style={{ color: Colors.darkGrey, fontSize: RFPercentage(1.9) }} >
@@ -175,8 +228,7 @@ function CreateNewInspectionScreen(props) {
                     </TouchableOpacity>
                 ))}
             </View>
-
-        </Screen>
+        </Screen >
     );
 }
 
@@ -200,6 +252,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         bottom: RFPercentage(1.8)
     },
+
 })
 
 export default CreateNewInspectionScreen;
