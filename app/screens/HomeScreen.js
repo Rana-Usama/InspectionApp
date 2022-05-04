@@ -14,7 +14,7 @@ function HomeScreen(props) {
     const buttonsData = [
         {
             title: 'Move-in Inspection',
-            onPress: 'LoginScreen'
+            onPress: 'CreateNewInspectionScreen'
         },
         {
             title: 'Move-out Inspection',
@@ -22,7 +22,7 @@ function HomeScreen(props) {
         },
         {
             title: 'Periodic Inspection',
-            onPress: 'LoginScreen'
+            onPress: 'CreateNewInspectionScreen'
         },
         {
             title: 'Repair Request',

@@ -13,7 +13,6 @@ import Colors from '../config/Colors';
 
 function LoginScreen(props) {
 
-
     const [indicator, showIndicator] = useState(false);
 
     const [inputField, SetInputField] = useState([
@@ -79,6 +78,7 @@ function LoginScreen(props) {
                             height={RFPercentage(6.8)}
                             leftIconName={item.iconName}
                             backgroundColor={Colors.grey}
+                            placeholderAtCenter={true}
                             borderWidth={RFPercentage(0.2)}
                             borderColor={Colors.grey}
                             secure={item.secure}
