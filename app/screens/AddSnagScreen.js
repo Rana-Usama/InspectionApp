@@ -69,21 +69,6 @@ function AddSnagScreen(props) {
 
     };
 
-    const handleLogin = () => {
-        showIndicator(true);
-        let tempfeilds = [...inputField];
-
-        props.navigation.navigate("HomeScreen")
-        try {
-            // API INTEGRATION WILL COME HERE
-        } catch (error) {
-            alert("Error");
-        }
-
-        showIndicator(false);
-    };
-
-
     return (
         <Screen style={{ flex: 1, justifyContent: 'flex-start', alignItems: "center", backgroundColor: Colors.white }}>
             <LoadingModal show={indicator} />
@@ -137,7 +122,7 @@ function AddSnagScreen(props) {
                                     <MyAppButton
                                         title="Add Photos"
                                         padding={RFPercentage(1.2)}
-                                        onPress={() => props.navigation.navigate("AddSnagScreen")}
+                                        onPress={() => props.navigation.navigate("TakePhotoScreen")}
                                         backgroundColor={Colors.brown}
                                         color={Colors.white}
                                         bold={false}
