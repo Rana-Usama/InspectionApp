@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, ImageBackground, TouchableOpacity, StyleSheet, ScrollView } from 'react-native'
+import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native'
 import { RFPercentage } from 'react-native-responsive-fontsize';
 
 //components
@@ -81,22 +81,22 @@ function RepairScreen(props) {
     };
 
     return (
-        <Screen style={{ flex: 1, justifyContent: 'flex-start', alignItems: "center", backgroundColor: Colors.white }}>
+        <Screen style={styles.screen}>
 
             <ScrollView style={{ flex: 1, width: '100%' }} >
                 <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
 
-                    <View style={{ marginTop: RFPercentage(3), width: '90%', justifyContent: 'center', alignItems: 'flex-start' }} >
+                    <View style={styles.navContainer} >
                         <Text style={{ color: Colors.black, fontSize: RFPercentage(2.6) }} >
                             Repair Request
                         </Text>
                         <View style={{ marginTop: RFPercentage(2), width: '100%' }} >
-                            <View style={{ backgroundColor: Colors.brown, width: RFPercentage(15), height: RFPercentage(4.2), borderRadius: RFPercentage(1), justifyContent: 'center', alignItems: 'center' }} >
+                            <View style={styles.highPriorityText} >
                                 <Text style={{ color: Colors.white, fontSize: RFPercentage(2.2) }} >
                                     High Priority
                                 </Text>
                             </View>
-                            <Text style={{ position: 'absolute', right: 0, color: Colors.darkGrey, fontSize: RFPercentage(1.8) }} >
+                            <Text style={styles.statusText} >
                                 Status
                             </Text>
                         </View>
@@ -129,29 +129,29 @@ function RepairScreen(props) {
                         </View>
                     ))}
 
-                    <View style={{ marginTop: RFPercentage(3), width: '90%', justifyContent: 'center', alignItems: 'flex-start' }} >
+                    <View style={styles.photoContainer} >
                         <Text style={{ color: Colors.black, fontSize: RFPercentage(2.3), fontWeight: 'bold' }} >
                             Photos
                         </Text>
                     </View>
 
-                    <View style={{ width: '90%', justifyContent: 'center', alignItems: 'center', marginTop: RFPercentage(2) }} >
+                    <View style={styles.imagesContainer} >
 
                         {imagesData.map((item, i) => (
                             <View key={i} style={{ marginTop: i == 0 ? 0 : RFPercentage(1.7), width: '100%', justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row' }} >
                                 <TouchableOpacity activeOpacity={0.8} >
-                                    <Image style={{ width: RFPercentage(16), height: RFPercentage(16), borderRadius: RFPercentage(1.2) }} source={item.image1} />
+                                    <Image style={styles.images} source={item.image1} />
                                 </TouchableOpacity>
                                 <TouchableOpacity activeOpacity={0.8} >
-                                    <Image style={{ width: RFPercentage(16), height: RFPercentage(16), borderRadius: RFPercentage(1.2) }} source={item.image2} />
+                                    <Image style={styles.images} source={item.image2} />
                                 </TouchableOpacity>
                                 <TouchableOpacity activeOpacity={0.8} >
-                                    <Image style={{ width: RFPercentage(16), height: RFPercentage(16), borderRadius: RFPercentage(1.2) }} source={item.image3} />
+                                    <Image style={styles.images} source={item.image3} />
                                 </TouchableOpacity>
                             </View>
                         ))}
                     </View>
-                    <View style={{ width: "100%", alignItems: "center", alignSelf: 'center', marginTop: RFPercentage(4) }}>
+                    <View style={styles.buttonContainer}>
                         <MyAppButton
                             title="Add Photos"
                             padding={RFPercentage(1.2)}
@@ -170,8 +170,8 @@ function RepairScreen(props) {
                                 <Text style={{ color: Colors.darkGrey, fontSize: RFPercentage(1.8) }} >
                                     {item.title1}
                                 </Text>
-                                <View style={{ borderRadius: RFPercentage(0.8), position: 'absolute', right: 0, backgroundColor: Colors.grey, width: RFPercentage(28), height: RFPercentage(5.5), justifyContent: 'flex-start', alignItems: 'center', flexDirection: 'row' }} >
-                                    <Text style={{ marginLeft: RFPercentage(1.2), color: Colors.black, fontSize: RFPercentage(2) }} >
+                                <View style={styles.dataSubContainer} >
+                                    <Text style={styles.dataText} >
                                         {item.title2}
                                     </Text>
                                 </View>
@@ -179,7 +179,7 @@ function RepairScreen(props) {
                         </View>
                     ))}
 
-                    <View style={{ width: "100%", alignItems: "center", alignSelf: 'center', marginTop: RFPercentage(6) }}>
+                    <View style={styles.submitContainer}>
                         <MyAppButton
                             title="Submit"
                             padding={RFPercentage(1.2)}
@@ -198,5 +198,79 @@ function RepairScreen(props) {
         </Screen>
     );
 }
+
+const styles = StyleSheet.create({
+    screen: {
+        flex: 1,
+        justifyContent: 'flex-start',
+        alignItems: "center",
+        backgroundColor: Colors.white
+    },
+    navContainer: {
+        marginTop: RFPercentage(3),
+        width: '90%',
+        justifyContent: 'center',
+        alignItems: 'flex-start'
+    },
+    highPriorityText: {
+        backgroundColor: Colors.brown,
+        width: RFPercentage(15),
+        height: RFPercentage(4.2),
+        borderRadius: RFPercentage(1),
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    statusText: {
+        position: 'absolute',
+        right: 0,
+        color: Colors.darkGrey,
+        fontSize: RFPercentage(1.8)
+    },
+    photoContainer: {
+        marginTop: RFPercentage(3),
+        width: '90%',
+        justifyContent: 'center',
+        alignItems: 'flex-start'
+    },
+    imagesContainer: {
+        width: '90%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: RFPercentage(2)
+    },
+    images: {
+        width: RFPercentage(16),
+        height: RFPercentage(16),
+        borderRadius: RFPercentage(1.2)
+    },
+    buttonContainer: {
+        width: "100%",
+        alignItems: "center",
+        alignSelf: 'center',
+        marginTop: RFPercentage(4)
+    },
+    dataSubContainer: {
+        borderRadius: RFPercentage(0.8),
+        position: 'absolute',
+        right: 0,
+        backgroundColor: Colors.grey,
+        width: RFPercentage(28),
+        height: RFPercentage(5.5),
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        flexDirection: 'row'
+    },
+    dataText: {
+        marginLeft: RFPercentage(1.2),
+        color: Colors.black,
+        fontSize: RFPercentage(2)
+    },
+    submitContainer: {
+        width: "100%",
+        alignItems: "center",
+        alignSelf: 'center',
+        marginTop: RFPercentage(6)
+    }
+})
 
 export default RepairScreen;

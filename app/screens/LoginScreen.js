@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, Image, KeyboardAvoidingView } from 'react-native'
+import { View, Text, TouchableOpacity, ScrollView, Image, KeyboardAvoidingView, StyleSheet } from 'react-native'
 import { RFPercentage } from 'react-native-responsive-fontsize';
 
 //components
@@ -57,11 +57,11 @@ function LoginScreen(props) {
     };
 
     return (
-        <Screen style={{ flex: 1, justifyContent: 'flex-start', alignItems: "center", backgroundColor: Colors.white }}>
+        <Screen style={styles.screen}>
             <LoadingModal show={indicator} />
 
             {/* Logo */}
-            <Image style={{ marginTop: RFPercentage(1), width: RFPercentage(28), height: RFPercentage(25) }} source={require('../../assets/images/logo.jpg')} />
+            <Image style={styles.logo} source={require('../../assets/images/logo.jpg')} />
 
             <KeyboardAvoidingView
                 behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -71,12 +71,12 @@ function LoginScreen(props) {
                 <ScrollView style={{ flex: 1, width: '100%' }} >
                     <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
 
-                        <Text style={{ marginTop: RFPercentage(5), color: Colors.primary, fontSize: RFPercentage(4), fontWeight: 'bold' }} >
+                        <Text style={styles.loginText} >
                             Login
                         </Text>
 
                         {/* Input field */}
-                        <View style={{ marginTop: RFPercentage(6), justifyContent: 'center', alignItems: 'center', width: '100%' }}>
+                        <View style={styles.inputFieldsContainer}>
                             {inputField.map((item, i) => (
                                 <View key={i} style={{ marginTop: i == 0 ? RFPercentage(2) : RFPercentage(1.8) }} >
                                     <InputField
@@ -117,12 +117,12 @@ function LoginScreen(props) {
                     </View>
                 </ScrollView>
 
-                <View style={{ position: 'absolute', bottom: RFPercentage(3), width: '90%', justifyContent: 'center', alignItems: 'center', alignSelf: 'center', flexDirection: 'row' }} >
+                <View style={styles.forgetPassContainer} >
                     <Text style={{ color: Colors.black, fontSize: RFPercentage(1.9), fontWeight: '500' }} >
                         Forget Password?
                     </Text>
                     <TouchableOpacity activeOpacity={0.7} style={{ marginLeft: RFPercentage(0.6) }} >
-                        <Text style={{ color: Colors.brown, fontSize: RFPercentage(1.9), fontWeight: 'bold', textDecorationLine: 'underline' }} >
+                        <Text style={styles.registerText} >
                             Register
                         </Text>
                     </TouchableOpacity>
@@ -131,5 +131,46 @@ function LoginScreen(props) {
         </Screen>
     );
 }
+
+const styles = StyleSheet.create({
+    screen: {
+        flex: 1,
+        justifyContent: 'flex-start',
+        alignItems: "center",
+        backgroundColor: Colors.white
+    },
+    logo: {
+        marginTop: RFPercentage(1),
+        width: RFPercentage(28),
+        height: RFPercentage(25)
+    },
+    loginText: {
+        marginTop: RFPercentage(5),
+        color: Colors.primary,
+        fontSize: RFPercentage(4),
+        fontWeight: 'bold'
+    },
+    inputFieldsContainer: {
+        marginTop: RFPercentage(6),
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%'
+    },
+    forgetPassContainer: {
+        position: 'absolute',
+        bottom: RFPercentage(3),
+        width: '90%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'center',
+        flexDirection: 'row'
+    },
+    registerText: {
+        color: Colors.brown,
+        fontSize: RFPercentage(1.9),
+        fontWeight: 'bold',
+        textDecorationLine: 'underline'
+    }
+})
 
 export default LoginScreen;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, ImageBackground, TouchableOpacity, StyleSheet, ScrollView, KeyboardAvoidingView } from 'react-native'
+import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView, KeyboardAvoidingView } from 'react-native'
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import * as ImagePicker from 'expo-image-picker';
 
@@ -78,21 +78,21 @@ function TakePhotoScreen(props) {
     };
 
     return (
-        <Screen style={{ flex: 1, justifyContent: 'flex-start', alignItems: "center", backgroundColor: Colors.white }}>
+        <Screen style={styles.screen}>
 
             <KeyboardAvoidingView
                 behavior={Platform.OS === "ios" ? "padding" : "height"}
                 style={{ flex: 1, width: '100%' }}
             >
 
-                <View style={{ alignSelf: 'center', marginTop: RFPercentage(3), width: '90%', justifyContent: 'center', alignItems: 'flex-start' }} >
+                <View style={styles.navContainer} >
                     <TouchableOpacity activeOpacity={0.8} onPress={pickImage} >
                         <Text style={{ color: Colors.black, fontSize: RFPercentage(2.6) }} >
                             Take Photo
                         </Text>
                     </TouchableOpacity>
 
-                    <View style={{ marginTop: RFPercentage(1.5), width: '100%', flexDirection: 'row', alignItems: 'center' }} >
+                    <View style={styles.navSubContainer} >
                         <TouchableOpacity onPress={pickImage} activeOpacity={0.8} >
                             <Text style={{ color: Colors.darkGrey, fontSize: RFPercentage(2) }} >
                                 Cancel
@@ -110,11 +110,11 @@ function TakePhotoScreen(props) {
                     <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
 
                         <TouchableOpacity activeOpacity={0.6} style={{ alignSelf: 'center', marginTop: RFPercentage(16) }} >
-                            <Image source={{ uri: image }} style={{ width: RFPercentage(50), height: RFPercentage(44), borderRadius: RFPercentage(1) }} />
+                            <Image source={{ uri: image }} style={styles.image} />
                         </TouchableOpacity>
 
                         {/* Input field */}
-                        <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: RFPercentage(5) }}>
+                        <View style={styles.inputFieldContainer}>
                             {inputField.map((item, i) => (
                                 <View key={i} style={{ marginTop: i == 0 ? RFPercentage(0.7) : RFPercentage(0.2) }} >
                                     <Text style={{ color: Colors.darkGrey, fontSize: RFPercentage(1.9) }} >
@@ -142,7 +142,7 @@ function TakePhotoScreen(props) {
                     </View>
                 </ScrollView>
 
-                <View style={{ alignSelf: 'center', position: 'absolute', bottom: RFPercentage(2), width: '84%', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }} >
+                <View style={styles.bottom} >
                     {bottomTabData.map((item, i) => (
                         <TouchableOpacity onPress={i == 0 ? pickImage : null} key={i} activeOpacity={0.8} >
                             <Text style={{ color: Colors.darkGrey, fontSize: RFPercentage(1.9) }} >
@@ -155,5 +155,29 @@ function TakePhotoScreen(props) {
         </Screen>
     );
 }
+
+const styles = StyleSheet.create({
+    screen: {
+        flex: 1, justifyContent: 'flex-start', alignItems: "center", backgroundColor: Colors.white
+    },
+    navContainer: {
+        alignSelf: 'center', marginTop: RFPercentage(3), width: '90%', justifyContent: 'center', alignItems: 'flex-start'
+    },
+    navSubContainer: {
+        marginTop: RFPercentage(1.5), width: '100%', flexDirection: 'row', alignItems: 'center'
+    },
+    image: {
+        width: RFPercentage(50), height: RFPercentage(44), borderRadius: RFPercentage(1)
+    },
+    inputFieldContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        marginTop: RFPercentage(5)
+    },
+    bottom: {
+        alignSelf: 'center', position: 'absolute', bottom: RFPercentage(2), width: '84%', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'
+    }
+})
 
 export default TakePhotoScreen;

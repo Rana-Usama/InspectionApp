@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, ImageBackground, TouchableOpacity, StyleSheet, ScrollView, KeyboardAvoidingView } from 'react-native'
+import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView, KeyboardAvoidingView } from 'react-native'
 import { RFPercentage } from 'react-native-responsive-fontsize';
 
 //components
@@ -72,7 +72,7 @@ function AddSnagScreen(props) {
     };
 
     return (
-        <Screen style={{ flex: 1, justifyContent: 'flex-start', alignItems: "center", backgroundColor: Colors.white }}>
+        <Screen style={styles.screen}>
             <LoadingModal show={indicator} />
 
             <KeyboardAvoidingView
@@ -83,17 +83,17 @@ function AddSnagScreen(props) {
                 <ScrollView style={{ flex: 1, width: '100%' }} >
                     <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
 
-                        <View style={{ marginTop: RFPercentage(3), width: '90%', justifyContent: 'center', alignItems: 'flex-start' }} >
+                        <View style={styles.navContainer} >
                             <Text style={{ color: Colors.black, fontSize: RFPercentage(2.6) }} >
                                 Move-in Inspection
                             </Text>
                             <View style={{ marginTop: RFPercentage(2), width: '100%' }} >
-                                <View style={{ backgroundColor: Colors.brown, width: RFPercentage(10), height: RFPercentage(4.2), borderRadius: RFPercentage(1), justifyContent: 'center', alignItems: 'center' }} >
+                                <View style={styles.openTextContainer} >
                                     <Text style={{ color: Colors.white, fontSize: RFPercentage(2.2) }} >
                                         Open
                                     </Text>
                                 </View>
-                                <Text style={{ position: 'absolute', right: 0, color: Colors.darkGrey, fontSize: RFPercentage(1.8) }} >
+                                <Text style={styles.statusText} >
                                     Status
                                 </Text>
                             </View>
@@ -102,9 +102,9 @@ function AddSnagScreen(props) {
                         {/* Input field */}
                         {inputField.map((item, i) => (
                             i == 2 ?
-                                <View key={i}  >
-                                    <View style={{ marginTop: RFPercentage(3), width: '90%', justifyContent: 'center', alignItems: 'flex-start' }} >
-                                        <Text style={{ color: Colors.black, fontSize: RFPercentage(2.3), fontWeight: 'bold' }} >
+                                <View key={i} style={{ alignSelf: 'center' }}  >
+                                    <View style={styles.photoTextContainer} >
+                                        <Text style={styles.photoText} >
                                             Photos
                                         </Text>
                                     </View>
@@ -114,18 +114,18 @@ function AddSnagScreen(props) {
                                         {imagesData.map((item, i) => (
                                             <View key={i} style={{ marginTop: i == 0 ? 0 : RFPercentage(1.7), width: '100%', justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row' }} >
                                                 <TouchableOpacity activeOpacity={0.8} >
-                                                    <Image style={{ width: RFPercentage(16), height: RFPercentage(16), borderRadius: RFPercentage(1.2) }} source={item.image1} />
+                                                    <Image style={styles.images} source={item.image1} />
                                                 </TouchableOpacity>
                                                 <TouchableOpacity activeOpacity={0.8} >
-                                                    <Image style={{ width: RFPercentage(16), height: RFPercentage(16), borderRadius: RFPercentage(1.2) }} source={item.image2} />
+                                                    <Image style={styles.images} source={item.image2} />
                                                 </TouchableOpacity>
                                                 <TouchableOpacity activeOpacity={0.8} >
-                                                    <Image style={{ width: RFPercentage(16), height: RFPercentage(16), borderRadius: RFPercentage(1.2) }} source={item.image3} />
+                                                    <Image style={styles.images} source={item.image3} />
                                                 </TouchableOpacity>
                                             </View>
                                         ))}
                                     </View>
-                                    <View style={{ width: "100%", alignItems: "center", alignSelf: 'center', marginTop: RFPercentage(4) }}>
+                                    <View style={styles.buttonContainer}>
                                         <MyAppButton
                                             title="Add Photos"
                                             padding={RFPercentage(1.3)}
@@ -186,5 +186,53 @@ function AddSnagScreen(props) {
         </Screen>
     );
 }
+
+const styles = StyleSheet.create({
+    screen: {
+        flex: 1,
+        justifyContent: 'flex-start',
+        alignItems: "center",
+        backgroundColor: Colors.white
+    },
+    navContainer: {
+        marginTop: RFPercentage(3),
+        width: '90%',
+        justifyContent: 'center',
+        alignItems: 'flex-start'
+    },
+    openTextContainer: {
+        backgroundColor: Colors.brown,
+        width: RFPercentage(10),
+        height: RFPercentage(4.2),
+        borderRadius: RFPercentage(1),
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    statusText: {
+        position: 'absolute',
+        right: 0,
+        color: Colors.darkGrey,
+        fontSize: RFPercentage(1.8)
+    },
+    photoTextContainer: {
+        marginTop: RFPercentage(3),
+        width: '90%',
+        justifyContent: 'center',
+        alignItems: 'flex-start'
+    },
+    photoText: {
+        color: Colors.black,
+        fontSize: RFPercentage(2.3),
+        fontWeight: 'bold'
+    },
+    images: {
+        width: RFPercentage(16),
+        height: RFPercentage(16),
+        borderRadius: RFPercentage(1.2)
+    },
+    buttonContainer: {
+        marginTop: RFPercentage(3)
+    }
+})
 
 export default AddSnagScreen;

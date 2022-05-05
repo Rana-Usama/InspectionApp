@@ -91,8 +91,4 @@ function HomeScreen(props) {
     );
 }
 
-const styles = StyleSheet.create({
-
-})
-
 export default HomeScreen;

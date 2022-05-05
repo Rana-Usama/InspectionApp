@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, ImageBackground, TouchableOpacity, StyleSheet, ScrollView, KeyboardAvoidingView } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, KeyboardAvoidingView } from 'react-native'
 import ReactNativeCrossPicker from "react-native-cross-picker";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { RFPercentage } from 'react-native-responsive-fontsize';
@@ -139,7 +139,7 @@ function CreateNewInspectionScreen(props) {
     };
 
     return (
-        <Screen style={{ flex: 1, justifyContent: 'flex-start', alignItems: "center", backgroundColor: Colors.white }}>
+        <Screen style={styles.screen}>
             <LoadingModal show={indicator} />
 
             <KeyboardAvoidingView
@@ -150,7 +150,7 @@ function CreateNewInspectionScreen(props) {
                     <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
 
                         {/* Picker */}
-                        <View style={{ marginTop: RFPercentage(1), width: '87%', alignItems: 'center', justifyContent: 'center' }}>
+                        <View style={styles.pickerContainer}>
                             <ReactNativeCrossPicker
                                 modalTextStyle={{ color: Colors.black }}
                                 mainComponentStyle={styles.mainComponentStyle}
@@ -188,7 +188,7 @@ function CreateNewInspectionScreen(props) {
                             ))}
                         </View>
 
-                        <View style={{ marginTop: RFPercentage(5), width: '90%', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }} >
+                        <View style={styles.tableContainer} >
                             {tableData.map((item, i) => (
                                 <View key={i} style={{ justifyContent: 'center', alignItems: 'flex-start' }} >
                                     <Text style={{ color: Colors.darkGrey }} >
@@ -222,7 +222,7 @@ function CreateNewInspectionScreen(props) {
                     </View>
                 </ScrollView>
 
-                <View style={{ position: 'absolute', bottom: RFPercentage(2), width: '84%', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }} >
+                <View style={styles.bottomTabContainer} >
                     {bottomTabData.map((item, i) => (
                         <TouchableOpacity key={i} activeOpacity={0.8} >
                             <Text style={{ color: Colors.darkGrey, fontSize: RFPercentage(1.9) }} >
@@ -237,6 +237,12 @@ function CreateNewInspectionScreen(props) {
 }
 
 const styles = StyleSheet.create({
+    screen: {
+        flex: 1,
+        justifyContent: 'flex-start',
+        alignItems: "center",
+        backgroundColor: Colors.white
+    },
     mainComponentStyle: {
         width: "100%",
         borderWidth: 0,
@@ -256,6 +262,27 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         bottom: RFPercentage(1.8)
     },
+    pickerContainer: {
+        marginTop: RFPercentage(1),
+        width: '87%',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    tableContainer: {
+        marginTop: RFPercentage(5),
+        width: '90%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
+    bottomTabContainer: {
+        position: 'absolute',
+        bottom: RFPercentage(2),
+        width: '84%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    }
 
 })
 
