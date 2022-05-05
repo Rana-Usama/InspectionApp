@@ -18,7 +18,7 @@ function HomeScreen(props) {
         },
         {
             title: 'Move-out Inspection',
-            onPress: 'LoginScreen'
+            onPress: 'MoveOutInspectionScreen'
         },
         {
             title: 'Periodic Inspection',
@@ -26,7 +26,7 @@ function HomeScreen(props) {
         },
         {
             title: 'Repair Request',
-            onPress: 'LoginScreen'
+            onPress: 'RepairScreen'
         },
     ]
 

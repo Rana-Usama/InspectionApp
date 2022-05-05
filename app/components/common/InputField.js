@@ -12,6 +12,7 @@ function InputField({
     onTouchStart = () => { },
     onTouchEnd = () => { },
     placeholder,
+    multipleLines = false,
     handleFeild,
     borderColor = Colors.white,
     borderWidth = RFPercentage(0),
@@ -53,7 +54,7 @@ function InputField({
 
             <TextInput
                 placeholder={placeholder}
-                multiline={true}
+                multiline={multipleLines ? true : false}
                 placeholderTextColor={placeholderColor}
                 onChangeText={(text) => handleFeild(text)}
                 onResponderStart={onTouchStart}

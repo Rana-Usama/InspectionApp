@@ -54,7 +54,7 @@ function TakePhotoScreen(props) {
             quality: 1,
         });
 
-        console.log(result);
+        // console.log(result);
 
         if (!result.cancelled) {
             setImage(result.uri);
@@ -87,12 +87,12 @@ function TakePhotoScreen(props) {
                 </TouchableOpacity>
 
                 <View style={{ marginTop: RFPercentage(1.5), width: '100%', flexDirection: 'row', alignItems: 'center' }} >
-                    <TouchableOpacity activeOpacity={0.8} >
+                    <TouchableOpacity onPress={pickImage} activeOpacity={0.8} >
                         <Text style={{ color: Colors.darkGrey, fontSize: RFPercentage(2) }} >
                             Cancel
                         </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity activeOpacity={0.8} style={{ position: 'absolute', right: 0 }} >
+                    <TouchableOpacity onPress={() => props.navigation.navigate("RepairScreen")} activeOpacity={0.8} style={{ position: 'absolute', right: 0 }} >
                         <Text style={{ color: Colors.darkGrey, fontSize: RFPercentage(2) }} >
                             Save
                         </Text>
@@ -137,7 +137,7 @@ function TakePhotoScreen(props) {
 
             <View style={{ position: 'absolute', bottom: RFPercentage(2), width: '84%', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }} >
                 {bottomTabData.map((item, i) => (
-                    <TouchableOpacity key={i} activeOpacity={0.8} >
+                    <TouchableOpacity onPress={i == 0 ? pickImage : null} key={i} activeOpacity={0.8} >
                         <Text style={{ color: Colors.darkGrey, fontSize: RFPercentage(1.9) }} >
                             {item.title}
                         </Text>

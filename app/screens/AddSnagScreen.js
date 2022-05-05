@@ -32,6 +32,7 @@ function AddSnagScreen(props) {
     const [inputField, SetInputField] = useState([
         {
             placeholder: "Description",
+            multipleLines: true,
             height: RFPercentage(9),
             value: "",
         },
@@ -57,6 +58,7 @@ function AddSnagScreen(props) {
         },
         {
             placeholder: "Comment",
+            multipleLines: true,
             height: RFPercentage(9),
             value: "",
         },
@@ -141,6 +143,7 @@ function AddSnagScreen(props) {
                                     <InputField
                                         placeholderColor={Colors.darkGrey}
                                         height={item.height}
+                                        multipleLines={item.multipleLines}
                                         backgroundColor={'#fff'}
                                         borderWidth={RFPercentage(0.2)}
                                         borderColor={Colors.black}

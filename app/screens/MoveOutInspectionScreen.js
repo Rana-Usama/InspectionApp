@@ -66,7 +66,7 @@ function MoveOutInspectionScreen(props) {
     const bottomTabData = [
         {
             title: 'Home',
-            // onPress:''
+            onPress: 'HomeScreen'
         },
         {
             title: 'Tutorials'
@@ -234,7 +234,7 @@ function MoveOutInspectionScreen(props) {
 
             <View style={{ position: 'absolute', bottom: RFPercentage(2), width: '84%', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }} >
                 {bottomTabData.map((item, i) => (
-                    <TouchableOpacity key={i} activeOpacity={0.8} >
+                    <TouchableOpacity onPress={() => props.navigation.navigate(item.onPress)} key={i} activeOpacity={0.8} >
                         <Text style={{ color: Colors.darkGrey, fontSize: RFPercentage(1.9) }} >
                             {item.title}
                         </Text>
