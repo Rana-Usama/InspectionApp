@@ -61,11 +61,13 @@ function RepairScreen(props) {
     const [inputField, SetInputField] = useState([
         {
             placeholder: "Issues",
+            multipleLines: true,
             height: RFPercentage(7),
             value: "",
         },
         {
             placeholder: "Request",
+            multipleLines: true,
             height: RFPercentage(7),
             value: "",
         },
@@ -112,6 +114,7 @@ function RepairScreen(props) {
                                     placeholderColor={Colors.darkGrey}
                                     height={item.height}
                                     backgroundColor={'#fff'}
+                                    multipleLines={item.multipleLines}
                                     borderWidth={RFPercentage(0.2)}
                                     borderColor={Colors.black}
                                     secure={item.secure}
@@ -157,7 +160,7 @@ function RepairScreen(props) {
                             color={Colors.white}
                             bold={false}
                             borderRadius={RFPercentage(1.5)}
-                            width={RFPercentage(18)}
+                            width={RFPercentage(16)}
                         />
                     </View>
 
@@ -185,7 +188,7 @@ function RepairScreen(props) {
                             color={Colors.white}
                             bold={false}
                             borderRadius={RFPercentage(1.5)}
-                            width={RFPercentage(18)}
+                            width={RFPercentage(16)}
                         />
                     </View>
 

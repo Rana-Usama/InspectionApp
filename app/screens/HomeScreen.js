@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import { RFPercentage } from 'react-native-responsive-fontsize';
 
 //components
@@ -52,13 +52,18 @@ function HomeScreen(props) {
     return (
         <Screen style={{ flex: 1, justifyContent: 'flex-start', alignItems: "center", backgroundColor: Colors.white }}>
 
-            <Text style={{ marginTop: RFPercentage(10), color: Colors.primary, fontSize: RFPercentage(3.5), fontWeight: 'bold' }} >
-                LOGO!
-            </Text>
+            <View style={{ marginTop: RFPercentage(2.5), width: '86%', flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }} >
+                <Text style={{ fontWeight: 'bold', color: Colors.black, fontSize: RFPercentage(2.4) }} >
+                    Jhon Doe!
+                </Text>
+            </View>
+
+            {/* Logo */}
+            <Image style={{ marginTop: RFPercentage(1), width: RFPercentage(28), height: RFPercentage(25) }} source={require('../../assets/images/logo.jpg')} />
 
             {/* Buttons Mapping */}
             {buttonsData.map((item, i) => (
-                <View key={i} style={{ width: "100%", alignItems: "center", marginTop: i == 0 ? RFPercentage(14.5) : RFPercentage(5) }}>
+                <View key={i} style={{ width: "100%", alignItems: "center", marginTop: i == 0 ? RFPercentage(4) : RFPercentage(3.9) }}>
                     <MyAppButton
                         title={item.title}
                         padding={RFPercentage(2)}
