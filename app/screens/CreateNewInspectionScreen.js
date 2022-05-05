@@ -279,6 +279,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: RFPercentage(2),
         width: '84%',
+        alignSelf: 'center',
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center'
